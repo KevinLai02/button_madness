@@ -46,7 +46,6 @@ function App() {
           Congratulations, you wasted 2 minutes of your life!
         </div>
       )}
-      
     </div>
   );
 }
