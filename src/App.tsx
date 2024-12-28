@@ -32,7 +32,7 @@ function App() {
       {buttonList.map((item, index) => (
         <button 
           key={index} 
-          style={{background: item.color, padding: '20px'}}
+          style={{background: item.color, padding: '20px', marginTop: '20px'}}
           onClick={()=>{
             setButtonList(buttonList.filter(data => data !== item))
             buttonAudio.play()
