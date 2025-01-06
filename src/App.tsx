@@ -23,19 +23,31 @@ function App() {
     }
   }
 
+  const buttonPressed = (item: ButtonListT) => {
+    const newList = buttonList.filter(data => data !== item)
+    setButtonList(newList)
+    buttonAudio.play()
+    if (newList.length === 0) {
+      setTimeout(()=>{
+        getRandomColor()
+      }, 3000)
+    }
+  }
+
   useEffect(()=>{
-    getRandomColor()
+    if (buttonList.length === 0) {
+      getRandomColor()
+    }
   }, [])
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    <div style={{display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center'}}>
       {buttonList.map((item, index) => (
         <button 
           key={index} 
-          style={{background: item.color, padding: '20px', marginTop: '20px'}}
+          style={{background: item.color, padding: '20px', marginTop: '20px', margin: '5px'}}
           onClick={()=>{
-            setButtonList(buttonList.filter(data => data !== item))
-            buttonAudio.play()
+            buttonPressed(item)
           }}
         >
           {item.name}
